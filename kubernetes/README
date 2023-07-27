@@ -1,3 +1,8 @@
+This script installs kubernetes on a CentOS-7 operating system.
+It configures some of stuff that the system needs such as: swap disabling, firewall ports opening, etc
+
+note: This has been tested ONLY on in a virtual environment, and the Centos-7 image is installed with the PLASMA environment.
+
 Before running the script you have to configure your network settings first to fit the number of nodes in the cluster.
 example:
 hostnamecli set-hostname master-node
