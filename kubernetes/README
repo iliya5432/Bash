@@ -1,0 +1,20 @@
+Before running the script you have to configure your network settings first to fit the number of nodes in the cluster.
+example:
+hostnamecli set-hostname master-node
+sudo echo "192.168.1.15 master-node.domain master-node" >> /etc/hosts
+sudo echo "192.168.1.16 worker1-node.domain worker1-node" >> /etc/hosts
+
+After configuring the network please run:
+sudo yum install dos2unix -y
+sudo dos2unix kubeinstall.sh
+
+This will make sure the script are in the right file format (unix).
+In order to make sure of it please run:
+sudo vim kubeinstall.sh
+<Press Esacpe> 
+:set ff?
+This should give you the current file format.
+
+note: make sure the file has the correct permissions as well.
+if you're not sure use:
+sudo chmod +755 kubeinstall.sh
