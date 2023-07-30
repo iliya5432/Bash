@@ -47,7 +47,6 @@ echo "br_netfilter" >> /etc/modules-load.d/containerd.conf
 modprobe overlay && \
 modprobe br_netfilter
 
-yum install yum-utils -y
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 CONTAINDERD_CONFIG_PATH=/etc/containerd/config.toml && \
 rm "${CONTAINDERD_CONFIG_PATH}" && \
