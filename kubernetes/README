@@ -5,7 +5,7 @@ note: This has been tested ONLY on in a virtual environment, and the Centos-7 im
 
 Before running the script you have to configure your network settings first to fit the number of nodes in the cluster.
 example:
-hostnamecli set-hostname master-node
+hostnamectl set-hostname master-node
 sudo echo "192.168.1.15 master-node.domain master-node" >> /etc/hosts
 sudo echo "192.168.1.16 worker1-node.domain worker1-node" >> /etc/hosts
 
