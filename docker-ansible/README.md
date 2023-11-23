@@ -1,17 +1,32 @@
-Prerequisites: 
-Tools to be installed: docker, ansible, ssh, sshpass.
-Actions: you have to build a docker image with ssh server installed and "ansible" user created and added to sudoers,
-you can use "Dockerfile" in order to build the image, notice the file does NOT contain "ansible" user creation instruction.
+# Prerequisites
 
-Note: you got to run ssh-keygen in order to copy the default ssh public key from the ansible master to the slaves, AND make sure the /etc/ansible/hosts file's last line is an empty group. (Example: [servers]).
+Ensure you have the following tools installed: 
+- Docker
+- Ansible
+- SSH
+- sshpass
 
+## Docker Image Setup
 
-docker_setup.sh - runs a number of containers with internal port 22 and external port by user's usage, using desired image.
-note: the '-p' flag indicates a port base range, let's say you have 3 containers and you've chosen the port base range to be 2000,
-the containers external ports will be: 5001, 5002, 5003.
+Build a Docker image featuring an installed SSH server. Create an "ansible" user and grant it sudo privileges. Utilize the provided "Dockerfile" for image creation. Please note that the "ansible" user creation instruction is intentionally omitted from the file.
 
-ansible_pubkey.sh - copies the public ssh key from ~/.ssh/id_rsa.pub to the desired container using user named ansible,
-and adds the new hosts to /etc/ansible/hosts.
+**Important Steps:**
+- Run `ssh-keygen` to copy the default SSH public key from the Ansible master to the slave nodes.
+- Confirm that the last line of the `/etc/ansible/hosts` file is an empty group, for example, `[servers]`.
 
-docker_undo.sh - removes containers and new entries from /etc/ansible/hosts.
+## Scripts
 
+### docker_setup.sh
+
+Execute this script to launch containers with internal port 22 and external ports determined by user input, using the specified Docker image.
+
+**Note:**
+- The `-p` flag designates a port base range. For instance, with 3 containers and a port base range of 2000, the external ports will be: 5001, 5002, 5003.
+
+### ansible_pubkey.sh
+
+Run this script to copy the public SSH key from `~/.ssh/id_rsa.pub` to the designated container, using the "ansible" user. Additionally, append the new hosts to the `/etc/ansible/hosts` file.
+
+### docker_undo.sh
+
+Execute this script to remove the containers and their corresponding entries from the `/etc/ansible/hosts` file.
