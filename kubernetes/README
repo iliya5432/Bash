@@ -1,25 +1,35 @@
-This script installs kubernetes on a CentOS-7 operating system.
-It configures some of stuff that the system needs such as: swap disabling, firewall ports opening, etc
+# Kubernetes Installation Script for CentOS-7
 
-note: This has been tested ONLY on in a virtual environment, and the Centos-7 image is installed with the PLASMA environment.
+This script automates the installation of Kubernetes on a CentOS-7 operating system. It includes configuration steps for essential system requirements, such as disabling swap and opening firewall ports.
+- ``Note: The script has been tested exclusively in a virtual environment using CentOS-7 image with PLASMA environment.``
 
-Before running the script you have to configure your network settings first to fit the number of nodes in the cluster.
-example:
+## Network Configuration
+
+Before running the script, ensure your network settings match the desired number of nodes in the cluster. Use the following example:
+
+```bash
 hostnamectl set-hostname master-node
 sudo echo "192.168.1.15 master-node.domain master-node" >> /etc/hosts
 sudo echo "192.168.1.16 worker1-node.domain worker1-node" >> /etc/hosts
+```
 
-After configuring the network please run:
+## Script Setup
+After configuring the network, execute the following commands:
+
+```
 sudo yum install dos2unix -y
 sudo dos2unix kubeinstall.sh
-
-This will make sure the script are in the right file format (unix).
-In order to make sure of it please run:
+```
+##### This ensures the script is in the correct Unix file format. To verify, run:
+```
 sudo vim kubeinstall.sh
-<Press Esacpe> 
-:set ff?
-This should give you the current file format.
 
-note: make sure the file has the correct permissions as well.
-if you're not sure use:
+# Press Escape
+# Type :set ff?
+# This should display the current file format.
+```
+- ``Note: Ensure the script has the correct permissions using:``
+
+```
 sudo chmod +755 kubeinstall.sh
+```
